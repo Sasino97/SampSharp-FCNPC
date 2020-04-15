@@ -1,0 +1,6 @@
+.hg/**
+.vs/**
+bin/*
+obj/*
+**/obj/**
+.hgignore
