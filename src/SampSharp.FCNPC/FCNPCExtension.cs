@@ -15,7 +15,10 @@
  * limitations under the License.
  */
 using SampSharp.FCNPCs;
+using SampSharp.FCNPCs.Controllers;
 using SampSharp.GameMode;
+using SampSharp.GameMode.Controllers;
+using System;
 
 [assembly: SampSharpExtension(typeof(FCNPCExtension))]
 namespace SampSharp.FCNPCs
@@ -33,6 +36,16 @@ namespace SampSharp.FCNPCs
             GameMode = gameMode;
             gameMode.Services.AddService(this);
             base.LoadServices(gameMode);
+        }
+
+        //
+        public override void LoadControllers(BaseMode gameMode, ControllerCollection controllerCollection)
+        {
+            var type = typeof(FCNPCController);
+            var instance = Activator.CreateInstance(type);
+            var controller = instance as IController;
+            controllerCollection.Add(controller);
+            base.LoadControllers(gameMode, controllerCollection);
         }
     }
 }

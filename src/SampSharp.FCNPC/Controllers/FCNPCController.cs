@@ -14,29 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using SampSharp.GameMode.Pools;
 
-namespace SampSharp.FCNPCs
+using SampSharp.GameMode.Controllers;
+
+namespace SampSharp.FCNPCs.Controllers
 {
-    public partial class Playback : IdentifiedPool<Playback>
+    public class FCNPCController : ITypeProvider
     {
-        public Playback() { }
-
-        /// <summary>
-        /// Loads the playback from the specified file.
-        /// </summary>
-        public static Playback Create(string file)
+        public virtual void RegisterTypes()
         {
-            return Create(Internal.LoadPlayingPlayback(file));
-        }
-
-        /// <summary>
-        /// Called when the instance was disposed.
-        /// </summary>
-        protected override void Dispose(bool disposing)
-        {
-            Internal.UnloadPlayingPlayback(Id);
-            base.Dispose(disposing);
+            FCNPC.Register<FCNPC>();
+            MovePath.Register<MovePath>();
+            Playback.Register<Playback>();
         }
     }
 }

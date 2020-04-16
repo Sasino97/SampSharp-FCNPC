@@ -746,8 +746,8 @@ namespace SampSharp.FCNPCs
         //
         public event EventHandler<HeightPositionChangedEventArgs> HeightPositionChanged;
 
-        /* Private Constructor */
-        private FCNPC() { }
+        /* Constructor */
+        public FCNPC() { }
 
         /* Public Static Methods */
         /// <summary>

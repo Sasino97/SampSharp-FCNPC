@@ -35,7 +35,7 @@ namespace SampSharp.FCNPCs
             }
         }
 
-        private MovePath() { }
+        public MovePath() { }
 
         /// <summary>
         /// Creates a new move path.

@@ -126,7 +126,7 @@ namespace SampSharp.FCNPCs
             var fcnpc = Find(npcid);
             var args = new WeaponShotEventArgs((Weapon)weaponid, (BulletHitType)hittype, hitid, new Vector3(x, y, z));
             fcnpc?.WeaponShot?.Invoke(fcnpc, args);
-            return args.PreventDamage;
+            return !args.PreventDamage;
         }
 
         internal static void OnWeaponStateChange(int npcid, int weapon_state)
@@ -186,7 +186,7 @@ namespace SampSharp.FCNPCs
             var fcnpc = Find(npcid);
             var e = new PlayerUpdateEventArgs();
             fcnpc?.Update?.Invoke(fcnpc, e);
-            return e.PreventPropagation;
+            return !e.PreventPropagation;
         }
 
         internal static void OnFinishMovePath(int npcid, int pathid)
